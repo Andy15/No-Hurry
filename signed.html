@@ -163,7 +163,7 @@
             var file = this.files[0];
                 
                 console.log(file);
-                parameter = {"photo":  file.name};
+                parameter = {"path":  file.name};
                 $.ajax({
                     "url": "/photo",
                     "type": "POST",
