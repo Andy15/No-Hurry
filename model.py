@@ -8,18 +8,18 @@ face = []
 res = set()
 
 def init(csv, cache):
-    df = pd.read_csv(csv, names=['name', 'sex', 'sno', 'photo', 'dep', 'sign', 'unsinged_time'])
+    df = pd.read_csv(csv, names=['name', 'sex', 'sno', 'photo', 'college', 'signed'])
 
     for idx, row in df.iterrows():
         if row['name'] in name:
             continue
-        if (os.path.exists(os.path.join(cache, row['name'] + '.npy'))):
-            arr = np.load(os.path.join(cache, row['name'] + '.npy'))
+        if (os.path.exists(os.path.join(cache, row['sno'] + '.npy'))):
+            arr = np.load(os.path.join(cache, row['sno'] + '.npy'))
         else:
             img = face_recognition.load_image_file(row['photo'])
             arr = face_recognition.face_encodings(img)[0]
-            np.save(os.path.join(cache, row['name'] + '.npy'), arr)
-        name.append(row['name'])
+            np.save(os.path.join(cache, row['sno'] + '.npy'), arr)
+        name.append(row['sno'])
         face.append(arr)
 
 def test(path, threshold):
