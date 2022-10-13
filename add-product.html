@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title></title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
+    <link rel="stylesheet" href="css/fontawesome.min.css" />
+    <link rel="stylesheet" href="jquery-ui-datepicker/jquery-ui.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/templatemo-style.css">
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-xl">
+        <div class="container h-100">
+            <a class="navbar-brand" href="index.html">
+                <h1 class="tm-site-title mb-0">新增学生</h1>
+            </a>
+            <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars tm-nav-icon"></i>
+        </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto h-100">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="fas fa-tachometer-alt"></i> 概览
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="signed.html">
+                                <i class="far fa-file-alt"></i> 签到情况
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="products.html">
+                                <i class="far fa-user"></i> 学生管理
+                            </a>
+                        </li>
+
+
+
+                    </ul>
+                </div>
+            </div>
+    </nav>
+    <div class="container tm-mt-big tm-mb-big">
+        <div class="row">
+            <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
+                <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="tm-block-title d-inline-block">添加学生</h2>
+                        </div>
+                    </div>
+                    <div class="row tm-edit-product-row">
+                        <div class="col-xl-6 col-lg-6 col-md-12">
+                            <form action="" class="tm-edit-product-form">
+                                <div class="form-group mb-3">
+                                    <label for="name">学生姓名
+                    </label>
+                                    <input id="name" name="name" type="text" class="form-control validate" required />
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="sno">学号</label
+                    >
+                    <textarea
+                      class="form-control validate"
+                      rows="1"
+                      required
+                    ></textarea>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label
+                      for="dep"
+                      >学院</label
+                    >
+                    <select
+                      class="custom-select tm-select-accounts"
+                      id="dep"
+                    >
+                      <option selected>请选择学院</option>
+                      <option value="1">计算机与大数据学院</option>
+                      <option value="2">数学与统计学院</option>
+                      <option value="3">外国语学院</option>
+                    </select>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label
+                      for="sex"
+                      >性别</label
+                    >
+                    <select
+                      class="custom-select tm-select-accounts"
+                      id="sex"
+                    >
+                      <option selected>请选择性别</option>
+                      <option value="1">男</option>
+                      <option value="2">女</option>
+                    </select>
+                  </div>
+                 
+                  
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
+                
+	              <img id="image-preview" >
+                <div >
+                  
+                <input type="file" style="opacity: 0; margin-bottom: -70px" class="btn btn-primary btn-block mx-auto" value="上传照片"><br>
+                <input
+                  type="button"
+                  class="btn btn-primary btn-block mx-auto"
+                  value="上传照片"
+                />
+                </div>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-block text-uppercase">确认添加学生</button>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="tm-footer row tm-mt-small">
+        <div class="col-12 font-weight-light">
+          <p class="text-center text-white mb-0 px-4 small">
+            Copyright &copy; <a target="_blank" href="https://github.com/Andy15/No-Hurry">NO-Hurry</a>
+        </p>
+        </div>
+    </footer> 
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="jquery-ui-datepicker/jquery-ui.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+      $(function() {
+        $("#expire_date").datepicker();
+      });
+    </script>
+    
+  </body>
+</html>
