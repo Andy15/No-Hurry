@@ -16,6 +16,7 @@ def add():
     college = request.form['college']
     signed = request.form['signed']
     manage.add(csv, name, sex, sno, photo, college, signed)
+    model.init(csv, cache)
 
 @app.route('/delete', methods=['POST'])
 def delete():

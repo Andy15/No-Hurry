@@ -11,7 +11,7 @@ def init(csv, cache):
     df = pd.read_csv(csv, names=['name', 'sex', 'sno', 'photo', 'college', 'signed'])
 
     for idx, row in df.iterrows():
-        if row['name'] in name:
+        if row['sno'] in name:
             continue
         if (os.path.exists(os.path.join(cache, row['sno'] + '.npy'))):
             arr = np.load(os.path.join(cache, row['sno'] + '.npy'))
