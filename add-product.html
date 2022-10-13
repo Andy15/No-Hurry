@@ -72,20 +72,16 @@
                                 <div class="form-group mb-3">
                                     <label for="sno">学号</label
                     >
-                    <textarea
-                      class="form-control validate"
-                      rows="1"
-                      required
-                    ></textarea>
+                    <input id="sno" name="sno" type="text" class="form-control validate" required />
                   </div>
                   <div class="form-group mb-3">
                     <label
-                      for="dep"
+                      for="college"
                       >学院</label
                     >
                     <select
                       class="custom-select tm-select-accounts"
-                      id="dep"
+                      id="college"
                     >
                       <option selected>请选择学院</option>
                       <option value="1">计算机与大数据学院</option>
@@ -115,7 +111,7 @@
 	              <img id="image-preview" >
                 <div >
                   
-                <input type="file" style="opacity: 0; margin-bottom: -70px" class="btn btn-primary btn-block mx-auto" value="上传照片"><br>
+                <input type="file" id="photo" style="opacity: 0; margin-bottom: -70px" class="btn btn-primary btn-block mx-auto" value="上传照片"><br>
                 <input
                   type="button"
                   class="btn btn-primary btn-block mx-auto"
@@ -124,7 +120,7 @@
                 </div>
               </div>
               <div class="col-12">
-                <button type="submit" class="btn btn-primary btn-block text-uppercase">确认添加学生</button>
+                <button type="submit" id="query" class="btn btn-primary btn-block text-uppercase">确认添加学生</button>
               </div>
             </form>
             </div>
@@ -132,6 +128,7 @@
         </div>
       </div>
     </div>
+    <div id="myDiv"></div>
     <footer class="tm-footer row tm-mt-small">
         <div class="col-12 font-weight-light">
           <p class="text-center text-white mb-0 px-4 small">
@@ -148,6 +145,48 @@
         $("#expire_date").datepicker();
       });
     </script>
-    
+    <script>
+      var fileInput = document.querySelector('input[type=file]'),
+                previewImg = document.querySelector('img');
+        fileInput.addEventListener('change', function () {
+          var file = this.files[0];
+          var tname;
+          console.log(file);
+          tt = {"photo":  file.name};
+          console.log(tt)
+            var file = this.files[0];
+            var reader = new FileReader();
+            // 监听reader对象的的onload事件，当图片加载完成时，把base64编码賦值给预览图片
+            reader.addEventListener("load", function () {
+                previewImg.src = reader.result;
+            }, false);
+            // 调用reader.readAsDataURL()方法，把图片转成base64
+            reader.readAsDataURL(file);
+        }, false);
+
+    </script>
+    <script>
+      $("#query").click(function () {
+        console.log(1);
+          parameter = {"name": $("#name").val(), "sno": $("#sno").val(),"colleage": $("#college").val(), "sex": $("#sex").val(),"photo": tt.photo}
+          console.log(1);
+          console.log(parameter);
+          $.ajax({
+              "url": "/submit",
+              "type": "POST",
+              "data": parameter,
+              "success": function (result) {
+                  $("#myDiv").append(result.result);
+                  console.log(parameter)
+                  console.log(result)
+              },
+              "error": function (result) {
+                  console.log(parameter)
+              },
+              "dataType": "json",
+              "async": true
+          });
+      })
+  </script>
   </body>
 </html>

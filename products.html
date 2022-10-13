@@ -130,10 +130,26 @@
         <script>
             function myFunction() {
                 var x;
-                var person = prompt("要删除的学生的学号", "Harry Potter");
-
+                var person = prompt("要删除的学生的学号", "");
+                parameter = {"sno": person}
+                $.ajax({
+                    "url": "/delete",
+                    "type": "POST",
+                    "data": parameter,
+                    "success": function (result) {
+                        $("#myDiv").append(result.result);
+                        console.log(parameter)
+                        console.log(result)
+                    },
+                    "error": function (result) {
+                        console.log(parameter)
+                    },
+                    "dataType": "json",
+                    "async": true
+                });
             }
         </script>
+        
         <script>
             window.onload = function() {
                 var url = "demo.json" /*json文件url，本地的就写本地的位置，如果是服务器的就写服务器的路径*/
