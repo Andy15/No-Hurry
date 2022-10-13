@@ -6,11 +6,9 @@ import face_recognition
 name = []
 face = []
 res = set()
-cache = 'cache'
-threshold = 0.8
 
-def init(csv):
-    df = pd.read_csv(csv)
+def init(csv, cache):
+    df = pd.read_csv(csv, names=['name', 'sex', 'sno', 'photo', 'dep', 'sign', 'unsinged_time'])
 
     for idx, row in df.iterrows():
         if row['name'] in name:
@@ -24,7 +22,7 @@ def init(csv):
         name.append(row['name'])
         face.append(arr)
 
-def test(path):
+def test(path, threshold):
     try:
         img = face_recognition.load_image_file(path)
         loc = face_recognition.face_locations(img)
