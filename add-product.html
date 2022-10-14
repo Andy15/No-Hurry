@@ -120,7 +120,7 @@
                 </div>
               </div>
               <div class="col-12">
-                <button type="submit" id="query" class="btn btn-primary btn-block text-uppercase">确认添加学生</button>
+                <input type="button" id="query" value="确认添加学生" class="btn btn-primary btn-block text-uppercase">
               </div>
             </form>
             </div>
@@ -145,12 +145,13 @@
         $("#expire_date").datepicker();
       });
     </script>
+    
     <script>
+      var temp;
       var fileInput = document.querySelector('input[type=file]'),
                 previewImg = document.querySelector('img');
         fileInput.addEventListener('change', function () {
           var file = this.files[0];
-          var tname;
           console.log(file);
           tt = {"photo":  file.name};
           console.log(tt)
@@ -159,7 +160,9 @@
             // 监听reader对象的的onload事件，当图片加载完成时，把base64编码賦值给预览图片
             reader.addEventListener("load", function () {
                 previewImg.src = reader.result;
+                temp=reader.result;
             }, false);
+            console.log(temp);
             // 调用reader.readAsDataURL()方法，把图片转成base64
             reader.readAsDataURL(file);
         }, false);
@@ -168,7 +171,7 @@
     <script>
       $("#query").click(function () {
         console.log(1);
-          parameter = {"name": $("#name").val(), "sno": $("#sno").val(),"colleage": $("#college").val(), "sex": $("#sex").val(),"photo": tt.photo}
+          parameter = {"name": $("#name").val(), "sno": $("#sno").val(),"colleage": $("#college").val(), "sex": $("#sex").val(),"photo": temp}
           console.log(1);
           console.log(parameter);
           $.ajax({
