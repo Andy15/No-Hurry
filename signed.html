@@ -172,6 +172,8 @@
                 temp=reader.result;
                 console.log(1);
                 console.log(temp);
+                var pos1=temp.indexOf(",")+1;
+                temp=temp.substring(pos1);
                 parameter = {"photo":  temp};
                 $.ajax({
                     "url": "/photo",
