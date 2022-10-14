@@ -37,14 +37,6 @@ def manual():
     sno = request.form['sno']
     manage.manual(csv, sno)
 
-@app.route('/all', methods=['POST'])
-def all():
-    return jsonify({'result': manage.all(csv)})
-
-@app.route('/signed', methods=['POST'])
-def signed():
-    return jsonify({'result': manage.signed(csv)})
-
 if __name__ == '__main__':
     model.init(csv, cache)
     app.run(debug=True)
