@@ -1,4 +1,5 @@
 import os
+import base64
 import numpy as np
 import pandas as pd
 import face_recognition
@@ -8,23 +9,22 @@ face = []
 res = set()
 
 def init(csv, cache):
-    df = pd.read_csv(csv, names=['name', 'sex', 'sno', 'photo', 'college', 'signed'])
+    df = pd.read_csv(csv, names=['name', 'sex', 'sno', 'college', 'signed'])
 
     for idx, row in df.iterrows():
         if row['sno'] in name:
             continue
-        if os.path.exists(os.path.join(cache, row['sno'] + '.npy')):
-            arr = np.load(os.path.join(cache, row['sno'] + '.npy'))
-        else:
-            img = face_recognition.load_image_file(row['photo'])
-            arr = face_recognition.face_encodings(img)[0]
-            np.save(os.path.join(cache, row['sno'] + '.npy'), arr)
+        arr = np.load(os.path.join(cache, row['sno'] + '.npy'))
         name.append(row['sno'])
         face.append(arr)
 
-def test(path, threshold):
+def test(photo, threshold, tmp):
     try:
-        img = face_recognition.load_image_file(path)
+        b = base64.b64decode(photo)
+        f = open(tmp, 'wb')
+        f.write(b)
+        f.close()
+        img = face_recognition.load_image_file(tmp)
         loc = face_recognition.face_locations(img)
 
         for i in range(len(loc)):

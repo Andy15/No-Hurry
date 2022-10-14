@@ -5,6 +5,7 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 csv = 'main.csv'
+tmp = 'tmp.png'
 cache = 'cache'
 threshold = 0.6
 
@@ -13,10 +14,10 @@ def add():
     name = request.form['name']
     sex = request.form['sex']
     sno = request.form['sno']
-    photo = request.form['photo']
     college = request.form['college']
     signed = request.form['signed']
-    manage.add(csv, name, sex, sno, photo, college, signed)
+    photo = request.form['photo']
+    manage.add(csv, name, sex, sno, college, signed, photo, cache, tmp)
     model.init(csv, cache)
 
 @app.route('/delete', methods=['POST'])
@@ -26,8 +27,8 @@ def delete():
 
 @app.route('/photo', methods=['POST'])
 def photo():
-    path = request.form['path']
-    result = model.test(path, threshold)
+    photo = request.form['photo']
+    result = model.test(photo, threshold, tmp)
     if result is not None:
         return jsonify({'result': list(result)})
     else:
