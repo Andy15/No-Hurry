@@ -30,5 +30,5 @@ def all(csv):
     out = []
     df = pd.read_csv(csv, names=['name', 'sex', 'sno', 'college', 'signed'])
     for idx, row in df.iterrows():
-        out.append({'name': row['name'], 'sex': row['sex'], 'sno': row['sno'], 'college': row['college'], 'signed': row['signed']})
+        out.append({'name': str(row['name']), 'sex': str(row['sex']), 'sno': str(row['sno']), 'college': str(row['college']), 'signed': str(row['signed'])})
     return out

@@ -9,6 +9,8 @@ face = []
 res = set()
 
 def init(csv, cache):
+    name.clear()
+    face.clear()
     df = pd.read_csv(csv, names=['name', 'sex', 'sno', 'college', 'signed'])
 
     for idx, row in df.iterrows():
@@ -20,6 +22,7 @@ def init(csv, cache):
 
 def test(photo, threshold, tmp):
     try:
+        res.clear()
         b = base64.b64decode(photo)
         f = open(tmp, 'wb')
         f.write(b)

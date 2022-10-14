@@ -24,6 +24,7 @@ def add():
 def delete():
     sno = request.form['sno']
     manage.delete(csv, sno)
+    model.init(csv, cache)
     return jsonify({'result': None})
 
 @app.route('/photo', methods=['POST'])
