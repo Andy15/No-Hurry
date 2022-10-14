@@ -207,11 +207,11 @@
                 var json = result;
                         console.log(json);
                         $("#tt").append('<thead><tr><th scope="col">&nbsp;</th><th scope="col">姓名</th><th scope="col">性别</th><th scope="col">学号</th><th scope="col">院系</th><th scope="col">&nbsp;</th> </tr> </thead>')
-                        for (var i = 0; i < json.length; i++) {
-                            if (json[i].signed == "0")
-                                $("#tt").append('<tr><th scope="row"><input type="checkbox" /></th><td class="tm-product-name">' + json[i].name + '</td><td>' + json[i].sex + '</td><td>' + json[i].sno + '</td><td>' + json[i].dep + '</td><td><a href="#" class="tm-product-delete-link"><i class="far fa-trash-alt tm-product-delete-icon"></i></a></td></tr>');
-                            else if (json[i].signed == "1")
-                                $("#tt").append('<tr><th scope="row"><input type="checkbox" checked="checked"/></th><td class="tm-product-name">' + json[i].name + '</td><td>' + json[i].sex + '</td><td>' + json[i].sno + '</td><td>' + json[i].dep + '</td><td><a href="#" class="tm-product-delete-link"><i class="far fa-trash-alt tm-product-delete-icon"></i></a></td></tr>');
+                        for (var i = 0; i < json.result.length; i++) {
+                            if (json.result[i].signed == "0")
+                                $("#tt").append('<tr><th scope="row"><input type="checkbox" /></th><td class="tm-product-name">' + json.result[i].name + '</td><td>' + json.result[i].sex + '</td><td>' + json.result[i].sno + '</td><td>' + json[i].college + '</td><td><a href="#" class="tm-product-delete-link"><i class="far fa-trash-alt tm-product-delete-icon"></i></a></td></tr>');
+                            else if (json.result[i].signed == "1")
+                                $("#tt").append('<tr><th scope="row"><input type="checkbox" checked="checked"/></th><td class="tm-product-name">' + json.result[i].name + '</td><td>' + json.result[i].sex + '</td><td>' + json.result[i].sno + '</td><td>' + json.result[i].college + '</td><td><a href="#" class="tm-product-delete-link"><i class="far fa-trash-alt tm-product-delete-icon"></i></a></td></tr>');
                         }
                         console.log(json);
             },
