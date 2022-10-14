@@ -173,11 +173,11 @@
         console.log(1);
         var pos1=temp.indexOf(",")+1;
                 temp=temp.substring(pos1);
-          parameter = {"name": $("#name").val(), "sno": $("#sno").val(),"colleage": $("#college").val(), "sex": $("#sex").val(),"photo": temp}
+          parameter = {"name": $("#name").val(), "sno": $("#sno").val(),"college": $("#college").val(), "sex": $("#sex").val(),"photo": temp}
           console.log(1);
           console.log(parameter);
           $.ajax({
-              "url": "/submit",
+              "url": "/add",
               "type": "POST",
               "data": parameter,
               "success": function (result) {
