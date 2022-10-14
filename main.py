@@ -15,15 +15,16 @@ def add():
     sex = request.form['sex']
     sno = request.form['sno']
     college = request.form['college']
-    signed = request.form['signed']
     photo = request.form['photo']
-    manage.add(csv, name, sex, sno, college, signed, photo, cache, tmp)
+    manage.add(csv, name, sex, sno, college, photo, cache, tmp)
     model.init(csv, cache)
+    return jsonify({'result': None})
 
 @app.route('/delete', methods=['POST'])
 def delete():
     sno = request.form['sno']
     manage.delete(csv, sno)
+    return jsonify({'result': None})
 
 @app.route('/photo', methods=['POST'])
 def photo():
@@ -38,6 +39,7 @@ def photo():
 def manual():
     sno = request.form['sno']
     manage.manual(csv, sno)
+    return jsonify({'result': None})
 
 @app.route('/all', methods=['POST'])
 def all():
@@ -48,6 +50,8 @@ def signed():
     return jsonify({'result': manage.signed(csv)})
 
 if __name__ == '__main__':
+    if not os.path.exists(cache):
+        os.makedirs(cache)
     if not os.path.exists(csv):
         open(csv, "w").close()
     model.init(csv, cache)

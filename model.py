@@ -14,7 +14,7 @@ def init(csv, cache):
     for idx, row in df.iterrows():
         if row['sno'] in name:
             continue
-        arr = np.load(os.path.join(cache, row['sno'] + '.npy'))
+        arr = np.load(os.path.join(cache, str(row['sno']) + '.npy'))
         name.append(row['sno'])
         face.append(arr)
 
