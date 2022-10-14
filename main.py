@@ -1,3 +1,4 @@
+import os
 import model
 import manage
 from flask import Flask, request, jsonify
@@ -37,6 +38,16 @@ def manual():
     sno = request.form['sno']
     manage.manual(csv, sno)
 
+@app.route('/all', methods=['POST'])
+def all():
+    return jsonify({'result': manage.all(csv)})
+
+@app.route('/signed', methods=['POST'])
+def signed():
+    return jsonify({'result': manage.signed(csv)})
+
 if __name__ == '__main__':
+    if not os.path.exists(csv):
+        open(csv, "w").close()
     model.init(csv, cache)
     app.run(debug=True)

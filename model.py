@@ -13,7 +13,7 @@ def init(csv, cache):
     for idx, row in df.iterrows():
         if row['sno'] in name:
             continue
-        if (os.path.exists(os.path.join(cache, row['sno'] + '.npy'))):
+        if os.path.exists(os.path.join(cache, row['sno'] + '.npy')):
             arr = np.load(os.path.join(cache, row['sno'] + '.npy'))
         else:
             img = face_recognition.load_image_file(row['photo'])

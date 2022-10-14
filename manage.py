@@ -14,3 +14,18 @@ def manual(csv, sno):
     df = pd.read_csv(csv, names=['name', 'sex', 'sno', 'photo', 'college', 'signed'])
     df.loc[df['sno'] == sno, 'signed'] = '1'
     df.to_csv(csv, header=None, index=False)
+
+def all(csv):
+    out = []
+    df = pd.read_csv(csv, names=['name', 'sex', 'sno', 'photo', 'college', 'signed'])
+    for idx, row in df.iterrows():
+        out.append({'name': row['name'], 'sex': row['sex'], 'sno': row['sno'], 'photo': row['photo'], 'college': row['college'], 'signed': row['signed']})
+    return out
+
+def unsigned(csv):
+    out = []
+    df = pd.read_csv(csv, names=['name', 'sex', 'sno', 'photo', 'college', 'signed'])
+    for idx, row in df.iterrows():
+        if row['signed'] == 1:
+            out.append({'name': row['name'], 'sex': row['sex'], 'sno': row['sno'], 'photo': row['photo'], 'college': row['college'], 'signed': row['signed']})
+    return out
