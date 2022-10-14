@@ -32,11 +32,3 @@ def all(csv):
     for idx, row in df.iterrows():
         out.append({'name': row['name'], 'sex': row['sex'], 'sno': row['sno'], 'college': row['college'], 'signed': row['signed']})
     return out
-
-def unsigned(csv):
-    out = []
-    df = pd.read_csv(csv, names=['name', 'sex', 'sno', 'college', 'signed'])
-    for idx, row in df.iterrows():
-        if row['signed'] == 1:
-            out.append({'name': row['name'], 'sex': row['sex'], 'sno': row['sno'], 'college': row['college'], 'signed': row['signed']})
-    return out

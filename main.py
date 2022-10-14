@@ -45,10 +45,6 @@ def manual():
 def all():
     return jsonify({'result': manage.all(csv)})
 
-@app.route('/signed', methods=['POST'])
-def signed():
-    return jsonify({'result': manage.signed(csv)})
-
 if __name__ == '__main__':
     if not os.path.exists(cache):
         os.makedirs(cache)
