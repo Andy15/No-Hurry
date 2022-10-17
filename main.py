@@ -31,6 +31,8 @@ def delete():
 def photo():
     photo = request.form['photo']
     result = model.test(photo, threshold, tmp)
+    for sno in result:
+        manage.manual(csv, sno)
     if result is not None:
         return jsonify({'result': list(result)})
     else:

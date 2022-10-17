@@ -6,23 +6,22 @@ import face_recognition
 
 name = []
 face = []
-res = set()
 
 def init(csv, cache):
     name.clear()
     face.clear()
-    df = pd.read_csv(csv, names=['name', 'sex', 'sno', 'college', 'signed'])
+    df = pd.read_csv(csv, names=['name', 'sex', 'sno', 'college', 'signed'], dtype=str)
 
     for idx, row in df.iterrows():
         if row['sno'] in name:
             continue
-        arr = np.load(os.path.join(cache, str(row['sno']) + '.npy'))
+        arr = np.load(os.path.join(cache, row['sno'] + '.npy'))
         name.append(row['sno'])
         face.append(arr)
 
 def test(photo, threshold, tmp):
     try:
-        res.clear()
+        res = set()
         b = base64.b64decode(photo)
         f = open(tmp, 'wb')
         f.write(b)
