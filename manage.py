@@ -14,7 +14,7 @@ def add(csv, name, sex, sno, college, photo, cache, tmp):
     np.save(os.path.join(cache, sno + '.npy'), arr)
     pd.concat([pd.read_csv(csv, names=['name', 'sex', 'sno', 'college', 'signed'], dtype=str),
                pd.DataFrame([[str(name), str(sex), str(sno), str(college), '0']],
-                            columns=['name', 'sex', 'sno', 'college', 'signed'])], dtype=str,
+                            columns=['name', 'sex', 'sno', 'college', 'signed'], dtype=str)],
                ignore_index=True).to_csv(csv, header=None, index=False)
 
 def delete(csv, sno):
