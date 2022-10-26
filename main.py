@@ -48,10 +48,6 @@ def manual():
 def all():
     return jsonify({'result': manage.all(csv)})
 
-@app.route('/count', methods=['POST'])
-def count():
-    return jsonify({'result': manage.count(csv)})
-
 if __name__ == '__main__':
     if not os.path.exists(cache):
         os.makedirs(cache)

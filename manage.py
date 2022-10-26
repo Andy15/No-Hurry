@@ -32,14 +32,3 @@ def all(csv):
     for idx, row in df.iterrows():
         out.append({'name': str(row['name']), 'sex': str(row['sex']), 'sno': str(row['sno']), 'college': str(row['college']), 'signed': str(row['signed'])})
     return out
-
-def count(csv):
-    out = dict()
-    df = pd.read_csv(csv, names=['name', 'sex', 'sno', 'college', 'signed'], dtype=str)
-    for idx, row in df.iterrows():
-        if row['signed'] == '1':
-            if row['college'] in out:
-                out['college'] += 1
-            else:
-                out['college'] = 1
-    return out
