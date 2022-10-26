@@ -16,9 +16,12 @@ def add():
     sno = request.form['sno']
     college = request.form['college']
     photo = request.form['photo']
-    manage.add(csv, name, sex, sno, college, photo, cache, tmp)
-    model.init(csv, cache)
-    return jsonify({'result': None})
+    flag = manage.add(csv, name, sex, sno, college, photo, cache, tmp)
+    if flag:
+        model.init(csv, cache)
+        return jsonify({'result': 1})
+    else:
+        return jsonify({'result': 0})
 
 @app.route('/delete', methods=['POST'])
 def delete():

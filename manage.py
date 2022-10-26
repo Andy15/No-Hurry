@@ -5,6 +5,9 @@ import pandas as pd
 import face_recognition
 
 def add(csv, name, sex, sno, college, photo, cache, tmp):
+    df = pd.read_csv(csv, names=['name', 'sex', 'sno', 'college', 'signed'], dtype=str)
+    if not df.loc[df['sno'] == sno].empty:
+        return False
     b = base64.b64decode(photo)
     f = open(tmp, 'wb')
     f.write(b)
@@ -12,10 +15,10 @@ def add(csv, name, sex, sno, college, photo, cache, tmp):
     img = face_recognition.load_image_file(tmp)
     arr = face_recognition.face_encodings(img)[0]
     np.save(os.path.join(cache, sno + '.npy'), arr)
-    pd.concat([pd.read_csv(csv, names=['name', 'sex', 'sno', 'college', 'signed'], dtype=str),
-               pd.DataFrame([[str(name), str(sex), str(sno), str(college), '0']],
-                            columns=['name', 'sex', 'sno', 'college', 'signed'], dtype=str)],
-               ignore_index=True).to_csv(csv, header=None, index=False)
+    pd.concat([df, pd.DataFrame([[str(name), str(sex), str(sno), str(college), '0']],
+                                  columns=['name', 'sex', 'sno', 'college', 'signed'], dtype=str)],
+              ignore_index=True).to_csv(csv, header=None, index=False)
+    return True
 
 def delete(csv, sno):
     df = pd.read_csv(csv, names=['name', 'sex', 'sno', 'college', 'signed'], dtype=str)
