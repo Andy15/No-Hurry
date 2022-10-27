@@ -13,7 +13,152 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="css/templatemo-style.css">
+    <style>
+   .form_1{
+	width:380px;
+	height:240px;
+	border:3px solid #567086;
+	visibility: hidden;
+	position: absolute;
+	z-index: 999;
+	opacity: 1;
+	overflow: hidden;
+	background-color: #415a70;
+	text-align: center;
+	margin-top: 10%;
+	margin-left: 35%;
+	border-radius: 10px;
+}
+.open{
+	visibility: visible;
+	opacity: 1;
+}
+.input_1{
+	margin-top: 15px;
+	width:100%;
+	height:40px;
+	
+}
 
+.input_1 .login_logo{
+	text-align: left;
+	font-size: 20px;
+	font-weight: 300;
+	padding-left: 30px;
+	float: left;
+}
+.input_1 .close{
+	width:20px;
+	height:20px;
+	color:#415a70;
+	text-align: center;
+	line-height: 20px;
+	border:1px solid  #415a70;
+	border-radius: 50%;
+	float: right;
+	padding-top: 0px;
+	margin-right: 10px;
+	font-size: 12px;
+}
+.input_1 .close:hover{
+	cursor:pointer;
+}
+hr{
+	background-color: #435c70;
+}
+
+.input_1 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #fff;
+	border:2px solid #415a70;
+	height:40px;
+	background-color: #435c70;
+}
+.submit_1{
+	border:2px solid #f5a623;
+	height:40px;
+	background-color: #f5a623;
+}
+.qq{
+    
+	width:300px;
+	height:35px;
+	border-radius: 5px;
+	border:1px solid  #394e64;
+    background-color: #394e64;
+    color:#FFF;
+}
+.test{
+	overflow: hidden;
+}
+#btn_2{
+	background-color: #f5a623;
+}
+.dialog{
+	width:300px;
+	height:120px;
+	border:2px solid #46b3e6;
+	overflow: hidden;
+	visibility: hidden;
+	z-index: 999;
+	overflow: hidden;
+	opacity: 1;
+	position: absolute;
+	background-color: #394e64;
+	margin-top: 5%;
+	margin-left: 40%;
+}
+.dialog .title{
+	text-align: center;
+	font-size: 20px;
+	font-weight: 300;
+	margin-top: 28px;
+	margin-bottom: 25px;
+	color:#FFF;
+}
+.dialog  .btn_2{
+	width:50%;
+	height:40px;
+	float:left;
+	background-color: #394e64;
+	line-height: 40px;
+	color: black;
+	text-align: center;
+	margin-bottom: 0px;
+}
+.dialog .btn_2:hover{
+	background-color:#f5a623 ;
+}
+.close_1{
+	overflow: hidden;
+    font-size: 1.0rem;
+    font-weight: 600;
+    width:280px;
+	height:40px;
+	border-radius: 5px;
+	background-color: #f5a623;
+	margin-bottom: 0px;
+	line-height: 40px;
+	color: #f4f4f4;
+    margin: 0 auto; text-align: center
+}
+.close_1:hover{
+	background-color: #f4f4f4;
+	color:red;
+	cursor: cell;
+}
+.form-control {
+    background-color: #54657d;
+    color: #fff;
+    border: 0;
+}
+.summt{
+    color: #fff;
+    background-color: #f5a623;
+}
+    </style>
 </head>
 
 <body id="reportsPage">
@@ -29,12 +174,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto h-100">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">
-                                <i class="fas fa-tachometer-alt"></i> 概览
-                                <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
+                        
 
                         <li class="nav-item">
                             <a class="nav-link" href="signed.html">
@@ -61,6 +201,14 @@
             </div>
         </div>
     </nav>
+    <div class="form_1">
+        <form >
+        <div class="input_1"><div class="login_logo">删除学生</div><div class="close">X</div></div>
+        <hr>
+        <div class="input_1"><input class="qq" type="text" id="user" placeholder="&nbsp;学号"  class="form-control" ></div>
+        <div class="close_1" >确定</div>
+        </form>
+    </div>
     <div class="container mt-5">
         <div class="row tm-content-row">
             <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col">
@@ -102,6 +250,7 @@
 
             </div>
         </div>
+        
         <footer class="tm-footer row tm-mt-small">
             <div class="col-12 font-weight-light">
                 <p class="text-center text-white mb-0 px-4 small">
@@ -115,6 +264,7 @@
         <script src="js/bootstrap.min.js"></script>
         <!-- https://getbootstrap.com/ -->
         <script>
+            
             $(function() {
                 $(".tm-product-name").on("click", function() {
                     window.location.href = "edit-product.html";
@@ -124,14 +274,15 @@
         <script>
             $(document).ready(function() {
                 $("#tt").empty();
-
-            })
-        </script>
-        <script>
-            function myFunction() {
-                var x;
-                var person = prompt("要删除的学生的学号", "");
-                parameter = {"sno": person}
+                var form_1=document.getElementsByClassName("form_1");
+                var close=document.getElementsByClassName("close");
+                close[0].addEventListener('click',function(){
+		form_1[0].className="form_1";
+       
+	})
+    var close_1=document.getElementsByClassName("close_1")
+        close_1[0].addEventListener('click',function(){
+            parameter = {"sno":  $("#user").val()}
                 $.ajax({
                     "url": "/delete",
                     "type": "POST",
@@ -140,6 +291,8 @@
                         $("#myDiv").append(result.result);
                         console.log(parameter)
                         console.log(result)
+                        //form_1[0].className="form_1";
+                        location.href="products.html";
                     },
                     "error": function (result) {
                         console.log(parameter)
@@ -147,6 +300,32 @@
                     "dataType": "json",
                     "async": true
                 });
+           
+	    })	
+            })
+        </script>
+        <script>
+            function myFunction() {
+                var x;
+                var form_1=document.getElementsByClassName("form_1");
+                form_1[0].className="form_1 open";	
+                //var person = prompt("要删除的学生的学号", "");
+                // parameter = {"sno": person}
+                // $.ajax({
+                //     "url": "/delete",
+                //     "type": "POST",
+                //     "data": parameter,
+                //     "success": function (result) {
+                //         $("#myDiv").append(result.result);
+                //         console.log(parameter)
+                //         console.log(result)
+                //     },
+                //     "error": function (result) {
+                //         console.log(parameter)
+                //     },
+                //     "dataType": "json",
+                //     "async": true
+                // });
             }
         </script>
         
